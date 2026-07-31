@@ -380,3 +380,5 @@ tile_set = SubResource("TileSet_bhhjh")
 
 [node name="EnemyPath" type="Path2D" parent="Map" unique_id=1114809409]
 curve = SubResource("Curve2D_ornx7")
+
+[node name="Enemies" type="Node" parent="Map" unique_id=2129352993]

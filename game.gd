@@ -30,5 +30,5 @@ func _process(delta: float) -> void:
 		mob.goal_reached.connect(on_goal_reached)
 		mob.set_curve(curve)
 		
-		$Map.add_child(mob)
+		$Map/Enemies.add_child(mob)
 		time = 0
