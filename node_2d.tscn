@@ -376,7 +376,6 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAAAAQAAAABAAoAAAAAAAQAAAACAAoAAAAAAAQ
 tile_set = SubResource("TileSet_bhhjh")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1114809409]
-unique_name_in_owner = true
 curve = SubResource("Curve2D_ornx7")
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=235199841]

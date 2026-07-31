@@ -13,6 +13,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time = time + delta
 	if time > 0.5:
-		print("D")
 		$"..".add_child(enemy.instantiate())
 		time = 0
