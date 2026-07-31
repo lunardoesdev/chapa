@@ -13,5 +13,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time = time + delta
 	if time > 0.5:
-		$"..".add_child(enemy.instantiate())
+		var mob: Enemy = enemy.instantiate()
+		
+		var game = $"../Game"
+		mob.died.connect(game.on_enemy_died)
+		mob.goal_reached.connect(game.on_goal_reached)
+		
+		$"..".add_child(mob)
 		time = 0

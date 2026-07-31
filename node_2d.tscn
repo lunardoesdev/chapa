@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cas4jk8fwkwxs" path="res://AssetJam2_SnowyTiles/assets/Tiles/Ground Tiles/tile_ground_08.png" id="31_m7xe6"]
 [ext_resource type="Texture2D" uid="uid://dujddsurqfaxa" path="res://AssetJam2_SnowyTiles/assets/Tiles/Ground Tiles/tile_ground_09.png" id="32_wqmsq"]
 [ext_resource type="Script" uid="uid://bd5qwx8b03gwi" path="res://enemy_spawner.gd" id="35_cnnru"]
+[ext_resource type="Script" uid="uid://cg77s2e6apho3" path="res://game.gd" id="36_540hr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnnru"]
 texture = ExtResource("28_cnnru")
@@ -380,3 +381,6 @@ curve = SubResource("Curve2D_ornx7")
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=235199841]
 script = ExtResource("35_cnnru")
+
+[node name="Game" type="Node" parent="." unique_id=1972744795]
+script = ExtResource("36_540hr")
