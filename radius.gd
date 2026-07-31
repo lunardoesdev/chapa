@@ -1,11 +1,7 @@
 @tool
-class_name Tower
 extends Node2D
 
-@export_range(1, 500, 1, "prefer_slider") var radius = 40:
-	set(value):
-		radius = value
-		queue_redraw()
+var radius = 42
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

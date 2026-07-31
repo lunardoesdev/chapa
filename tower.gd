@@ -1,5 +1,11 @@
-extends Node
+@tool
+class_name Tower
+extends Node2D
 
+@export_range(1, 350, 10, "prefer_slider") var radius = 40:
+	set(value):
+		radius = value
+		self.queue_redraw()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,7 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Engine.is_editor_hint():
+		return
 
-func _draw():
-	draw_circle
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, radius, Color(0.122, 0.424, 0.753, 0.49))

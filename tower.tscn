@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b6u1rodp0irrf" path="res://tower.gd" id="1_stebd"]
 [ext_resource type="Texture2D" uid="uid://c64lolgwlvyyj" path="res://AssetJam2_SnowyTiles/assets/Sprites/Character/character_still.png" id="2_jbe1c"]
-[ext_resource type="Script" uid="uid://csres4bgkgx0c" path="res://radius.gd" id="3_vxmma"]
 
-[node name="Tower" type="Node" unique_id=111102408]
+[node name="Tower" type="Node2D" unique_id=1798931682]
 script = ExtResource("1_stebd")
-
-[node name="radius" type="Node2D" parent="." unique_id=1171211727]
-script = ExtResource("3_vxmma")
+radius = 41
 
 [node name="TowerSprite" type="Sprite2D" parent="." unique_id=1129311025]
 texture_filter = 1
