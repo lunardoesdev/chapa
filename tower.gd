@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	clock = clock + delta
 	
 	if clock > 0.005:
-		if target != null and target.global_position.distance_to(self.global_position):
+		if target != null and target.global_position.distance_to(self.global_position) > radius:
 			target = null
 		for e: Enemy in get_tree().get_nodes_in_group("enemies"):
 			var dist = e.global_position.distance_to(self.global_position)
@@ -38,8 +38,8 @@ func _process(delta: float) -> void:
 		clock = 0
 
 func _draw() -> void:
+	draw_circle(Vector2.ZERO, radius, Color(0.122, 0.424, 0.753, 0.118))
 	if target == null:
 		pass
 	else:
-		draw_circle(Vector2.ZERO, radius, Color(0.122, 0.424, 0.753, 0.118))
 		draw_line(Vector2.ZERO, to_local(target.global_position), Color(0.0, 0.774, 0.0, 1.0), 10)
