@@ -32,3 +32,5 @@ func _process(delta: float) -> void:
 		
 		$Map/Enemies.add_child(mob)
 		time = 0
+		
+		# print("enemies on map: ", get_tree().get_nodes_in_group("enemies").size())
