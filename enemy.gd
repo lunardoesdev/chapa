@@ -18,9 +18,8 @@ func take_damage(dmg: int) -> void:
 func check_finish() -> void:
 	check_path_collide()
 	if path_idx > (curve.point_count - 1):
-		self.hide()
-		self.queue_free()
 		goal_reached.emit()
+		self.queue_free()
 
 
 func check_path_collide() -> void:
