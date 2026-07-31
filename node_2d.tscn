@@ -34,8 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cye2esv63y2m" path="res://AssetJam2_SnowyTiles/assets/Tiles/Ground Tiles/tile_ground_07.png" id="30_22e24"]
 [ext_resource type="Texture2D" uid="uid://cas4jk8fwkwxs" path="res://AssetJam2_SnowyTiles/assets/Tiles/Ground Tiles/tile_ground_08.png" id="31_m7xe6"]
 [ext_resource type="Texture2D" uid="uid://dujddsurqfaxa" path="res://AssetJam2_SnowyTiles/assets/Tiles/Ground Tiles/tile_ground_09.png" id="32_wqmsq"]
-[ext_resource type="Script" uid="uid://bwc3vm55vap5" path="res://enemy.gd" id="35_540hr"]
-[ext_resource type="Texture2D" uid="uid://b7imesi0iix05" path="res://icon.svg" id="36_6ip5v"]
+[ext_resource type="Script" uid="uid://bd5qwx8b03gwi" path="res://enemy_spawner.gd" id="35_cnnru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnnru"]
 texture = ExtResource("28_cnnru")
@@ -377,11 +376,8 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAAAAQAAAABAAoAAAAAAAQAAAACAAoAAAAAAAQ
 tile_set = SubResource("TileSet_bhhjh")
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1114809409]
+unique_name_in_owner = true
 curve = SubResource("Curve2D_ornx7")
 
-[node name="enemy" type="Node2D" parent="." unique_id=608529037]
-script = ExtResource("35_540hr")
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=53511950]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("36_6ip5v")
+[node name="EnemySpawner" type="Node" parent="." unique_id=235199841]
+script = ExtResource("35_cnnru")
