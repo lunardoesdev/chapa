@@ -22,13 +22,19 @@ func check_finish() -> void:
 		goal_reached.emit()
 		self.queue_free()
 
+func get_progress() -> float:
+	check_path_collide()
+	var dist_to_next = curve.get_point_position(path_idx - 1).distance_to(global_position)
+	var percent = dist_to_next / curve.get_point_position(path_idx - 1).distance_to(curve.get_point_position(path_idx))
+	percent = min(percent, 0.99)
+	return path_idx + percent
 
 func check_path_collide() -> void:
 	if curve.get_point_position(path_idx).distance_to(global_position) < speed * 0.01:
 		path_idx = path_idx + 1
 
-func set_curve(curve: Curve2D) -> void:
-	self.curve = curve
+func set_curve(c: Curve2D) -> void:
+	curve = c
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
