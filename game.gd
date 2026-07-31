@@ -1,7 +1,16 @@
 extends Node
 
+const enemy = preload("res://enemy.tscn")
+
+var time = 0
 var lives = 20
 var gold = 50
+var curve: Curve2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var path = $Map/EnemyPath
+	curve = path.curve
 
 func on_enemy_died():
 	gold = gold + 5
@@ -11,12 +20,15 @@ func on_goal_reached():
 	lives = lives - 1
 	print("Lives: ", lives)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	time = time + delta
+	if time > 0.5:
+		var mob: Enemy = enemy.instantiate()
+
+		mob.died.connect(on_enemy_died)
+		mob.goal_reached.connect(on_goal_reached)
+		mob.set_curve(curve)
+		
+		$Map.add_child(mob)
+		time = 0

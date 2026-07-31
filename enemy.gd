@@ -27,10 +27,11 @@ func check_path_collide() -> void:
 	if curve.get_point_position(path_idx).distance_to(global_position) < speed * 0.01:
 		path_idx = path_idx + 1
 
+func set_curve(curve: Curve2D) -> void:
+	self.curve = curve
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var path = $"../EnemyPath"
-	curve = path.get_curve()
 	global_position = curve.get_point_position(path_idx)
 	check_path_collide()
 
