@@ -1,8 +1,18 @@
 extends Node2D
 
+signal died
+signal goal_reached
+
 var path_idx = 0
 var curve: Curve2D
 var speed = 50
+var hp = 100
+
+func take_damage(dmg: int) -> void:
+	hp = hp - dmg
+	if hp <= 0:
+		died.emit()
+		self.queue_free()
 
 
 func check_finish() -> void:
@@ -10,6 +20,7 @@ func check_finish() -> void:
 	if path_idx > (curve.point_count - 1):
 		self.hide()
 		self.queue_free()
+		goal_reached.emit()
 
 
 func check_path_collide() -> void:
