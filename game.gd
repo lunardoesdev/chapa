@@ -1,6 +1,7 @@
-extends Node
+extends Node2D
 
 const enemy = preload("res://enemy.tscn")
+const tower = preload("res://tower.tscn")
 
 signal gold_changed(value: int)
 signal lives_changed(value: int)
@@ -9,6 +10,29 @@ var time = 0
 var lives = 20
 var gold = 50
 var curve: Curve2D
+
+func _try_place_tower(pos: Vector2) -> void:
+	var bg: TileMapLayer = $Map/TileLayers/bg
+	var tile: Vector2i = bg.local_to_map(bg.to_local(pos))
+	
+	if bg.get_cell_source_id(tile) == -1:
+		return
+	
+	# check for path collision
+	for l in [$Map/TileLayers/path]:
+		if l.get_cell_source_id(tile) != -1:
+			return
+	for t: Tower in $Map/Towers.get_children():
+		if bg.local_to_map(bg.to_local(t.global_position)) == tile:
+			return # cell is occupied by tower
+	
+	var t: Tower = tower.instantiate()
+	if gold < t.cost:
+		return
+	gold -= t.cost
+	t.position = bg.map_to_local(tile)
+	$Map/Towers.add_child(t)
+	gold_changed.emit(gold)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,3 +86,5 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_try_place_tower(get_global_mouse_position())
