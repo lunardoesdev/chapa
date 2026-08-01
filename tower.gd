@@ -8,7 +8,7 @@ var clock = 0
 var dmg = 10
 var target: Enemy
 
-@export_range(0.1, 5, 0.1) var fire_rate = 0.5
+@export_range(0.1, 5, 0.1) var fire_rate: float = 0.5
 
 @export_range(1, 350, 10, "prefer_slider") var radius = 40:
 	set(value):
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 		bullet.set_target(target)
 		bullet.set_damage(dmg)
 		bullet.global_position = self.global_position
-		$"..".add_child(bullet)
+		$%Bullets.add_child(bullet)
 		queue_redraw()
 
 func _draw() -> void:

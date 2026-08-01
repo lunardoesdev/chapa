@@ -386,17 +386,25 @@ curve = SubResource("Curve2D_ornx7")
 
 [node name="Tower" parent="Towers" unique_id=1798931682 instance=ExtResource("35_te172")]
 position = Vector2(216, 54)
+fire_rate = null
 
 [node name="Tower3" parent="Towers" unique_id=1506969073 instance=ExtResource("35_te172")]
 position = Vector2(116, 68)
+fire_rate = null
 
 [node name="Tower4" parent="Towers" unique_id=2001012145 instance=ExtResource("35_te172")]
 position = Vector2(119, 30)
+fire_rate = null
 
 [node name="Tower2" parent="Towers" unique_id=2021989330 instance=ExtResource("35_te172")]
 position = Vector2(315, 134)
+fire_rate = null
 radius = 71
 
 [node name="Tower6" parent="Towers" unique_id=21300904 instance=ExtResource("35_te172")]
 position = Vector2(80, 156)
+fire_rate = null
 radius = 71
+
+[node name="Bullets" type="Node" parent="." unique_id=667096038]
+unique_name_in_owner = true
