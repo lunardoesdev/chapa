@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg77s2e6apho3" path="res://game.gd" id="1_xex6t"]
 [ext_resource type="PackedScene" uid="uid://cdldtmcvk707g" path="res://map.tscn" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://teie7yf3ikmp" path="res://camera_2d.gd" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://bt6kncxvhtet7" path="res://hud.gd" id="3_feb5d"]
 
 [node name="Game" type="Node2D" unique_id=285940144]
@@ -11,10 +12,12 @@ script = ExtResource("1_xex6t")
 
 [node name="Camera2D" type="Camera2D" parent="Map" unique_id=430561641]
 position = Vector2(200, 150)
+limit_enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 400
 limit_bottom = 300
+script = ExtResource("3_fc0e3")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1840421747]
 script = ExtResource("3_feb5d")
