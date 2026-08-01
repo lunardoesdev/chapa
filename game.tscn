@@ -9,6 +9,13 @@ script = ExtResource("1_xex6t")
 
 [node name="Map" parent="." unique_id=1178251865 instance=ExtResource("2_e2o6t")]
 
+[node name="Camera2D" type="Camera2D" parent="Map" unique_id=430561641]
+position = Vector2(200, 150)
+limit_left = 0
+limit_top = 0
+limit_right = 400
+limit_bottom = 300
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1840421747]
 script = ExtResource("3_feb5d")
 
