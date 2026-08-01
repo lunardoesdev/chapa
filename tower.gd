@@ -7,6 +7,7 @@ const BulletScene = preload("res://bullet.tscn")
 var clock = 0
 var dmg = 10
 var target: Enemy
+var boredom = 10
 @export_range(1, 100, 5) var cost: int = 5
 
 @export_range(0.1, 5, 0.1) var fire_rate: float = 2
@@ -25,6 +26,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+	
+	boredom -= delta
+	if boredom <= 0:
+		self.queue_free()
 	
 	clock = clock + delta
 	
