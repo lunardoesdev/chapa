@@ -33,7 +33,6 @@ enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 [gui]
 
 theme/default_font_antialiasing=2
-theme/default_font_hinting=2
 theme/default_font_generate_mipmaps=true
 theme/custom="uid://cnhpnc5xc2de4"
 

@@ -17,6 +17,24 @@ func _ready() -> void:
 	gold_changed.connect($HUD._on_gold_changed)
 	lives_changed.connect($HUD._on_lives_changed)
 	$HUD.set_values(gold, lives)
+	
+	var screenSize: Vector2i = DisplayServer.screen_get_size()
+	
+	var window = get_window()
+	window.content_scale_size = screenSize
+	
+	
+	var camera: Camera2D = $Map/Camera2D
+	var bg: TileMapLayer = $Map/TileLayers/bg
+	var layers = $Map/TileLayers
+	var bgRect = bg.get_used_rect()
+	var bgSize = (Vector2(bgRect.size) * bg.rendering_quadrant_size)
+	var ratio = Vector2(screenSize) / bgSize
+	var smallSide = min(ratio.x, ratio.y)
+	ratio = Vector2(smallSide, smallSide)
+	camera.global_position = bg.global_position + bgSize / 2
+	window.content_scale_size = bgSize
+
 
 func on_enemy_died():
 	gold = gold + 5
