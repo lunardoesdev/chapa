@@ -7,9 +7,9 @@ const BulletScene = preload("res://bullet.tscn")
 var clock = 0
 var dmg = 10
 var target: Enemy
-@export_range(1, 100, 5) var cost = 5
+@export_range(1, 100, 5) var cost: int = 5
 
-@export_range(0.1, 5, 0.1) var fire_rate: float = 0.5
+@export_range(0.1, 5, 0.1) var fire_rate: float = 2
 
 @export_range(1, 350, 10, "prefer_slider") var radius = 40:
 	set(value):
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	clock = clock + delta
 	
-	if clock > fire_rate:
+	if clock > 1 / fire_rate:
 		if target != null and !is_instance_valid(target):
 			target = null
 

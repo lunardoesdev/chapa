@@ -8,8 +8,19 @@ signal lives_changed(value: int)
 
 var time = 0
 var lives = 20
-var gold = 50
+var gold: int = 50
 var curve: Curve2D
+
+func _try_upgrade_tower(t: Tower) -> void:
+	var upgrade_cost = t.cost / 2
+	if gold > upgrade_cost:
+		gold -= upgrade_cost
+		gold_changed.emit(gold)
+		t.radius *= 1.25
+		t.dmg *= 1.25
+		t.fire_rate *= 1.25
+	
+	
 
 func _try_place_tower(pos: Vector2) -> void:
 	var bg: TileMapLayer = $Map/TileLayers/bg
@@ -24,7 +35,7 @@ func _try_place_tower(pos: Vector2) -> void:
 			return
 	for t: Tower in $Map/Towers.get_children():
 		if bg.local_to_map(bg.to_local(t.global_position)) == tile:
-			return # cell is occupied by tower
+			return _try_upgrade_tower(t) # cell is occupied by tower
 	
 	var t: Tower = tower.instantiate()
 	if gold < t.cost:
