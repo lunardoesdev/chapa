@@ -7,7 +7,7 @@ signal goal_reached
 var path_idx = 0
 var curve: Curve2D
 var speed = 50
-var hp = 100
+var hp = 50
 
 func take_damage(dmg: int) -> void:
 	hp = hp - dmg

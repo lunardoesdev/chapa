@@ -2,8 +2,10 @@
 class_name Tower
 extends Node2D
 
+const BulletScene = preload("res://bullet.tscn")
+
 var clock = 0
-var dmg = 5
+var dmg = 10
 var target: Enemy
 @export_range(1, 350, 10, "prefer_slider") var radius = 40:
 	set(value):
@@ -22,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	clock = clock + delta
 	
-	if clock > 0.005:
+	if clock > 0.5:
 		if target != null and target.global_position.distance_to(self.global_position) > radius:
 			target = null
 		for e: Enemy in get_tree().get_nodes_in_group("enemies"):
@@ -33,7 +35,10 @@ func _process(delta: float) -> void:
 				elif e.get_progress() > target.get_progress():
 					target = e
 				look_at(target.global_position)
-				target.take_damage(0)
+				var bullet: Bullet = BulletScene.instantiate()
+				bullet.set_target(target)
+				bullet.set_damage(dmg)
+				self.add_child(bullet)
 				queue_redraw()
 		clock = 0
 
@@ -42,4 +47,5 @@ func _draw() -> void:
 	if target == null:
 		pass
 	else:
-		draw_line(Vector2.ZERO, to_local(target.global_position), Color(0.0, 0.774, 0.0, 1.0), 10)
+		#draw_line(Vector2.ZERO, to_local(target.global_position), Color(0.0, 0.774, 0.0, 1.0), 10)
+		pass

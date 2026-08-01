@@ -388,14 +388,15 @@ curve = SubResource("Curve2D_ornx7")
 position = Vector2(216, 54)
 
 [node name="Tower3" parent="Towers" unique_id=1506969073 instance=ExtResource("35_te172")]
-position = Vector2(123, 66)
+position = Vector2(116, 68)
 
 [node name="Tower4" parent="Towers" unique_id=2001012145 instance=ExtResource("35_te172")]
 position = Vector2(119, 30)
 
-[node name="Tower5" parent="Towers" unique_id=1513571741 instance=ExtResource("35_te172")]
-position = Vector2(123, 106)
-
 [node name="Tower2" parent="Towers" unique_id=2021989330 instance=ExtResource("35_te172")]
 position = Vector2(315, 134)
+radius = 71
+
+[node name="Tower6" parent="Towers" unique_id=21300904 instance=ExtResource("35_te172")]
+position = Vector2(80, 156)
 radius = 71
