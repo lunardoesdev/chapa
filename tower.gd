@@ -40,16 +40,16 @@ func _process(delta: float) -> void:
 					target = e
 				elif e.get_progress() > target.get_progress():
 					target = e
-		
+		clock = 0
 		if !is_instance_valid(target):
 			return
 		look_at(target.global_position)
 		var bullet: Bullet = BulletScene.instantiate()
 		bullet.set_target(target)
 		bullet.set_damage(dmg)
-		self.add_child(bullet)
+		bullet.global_position = self.global_position
+		$"..".add_child(bullet)
 		queue_redraw()
-		clock = 0
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, radius, Color(0.122, 0.424, 0.753, 0.118))
