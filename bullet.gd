@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	if dist.length() < radius:
 		target.take_damage(damage)
 		self.queue_free()
+		return
 	var step = dist.normalized() * px_per_second * delta
 	self.global_position += step
 
