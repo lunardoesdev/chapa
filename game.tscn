@@ -2,8 +2,24 @@
 
 [ext_resource type="Script" uid="uid://cg77s2e6apho3" path="res://game.gd" id="1_xex6t"]
 [ext_resource type="PackedScene" uid="uid://cdldtmcvk707g" path="res://map.tscn" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://bt6kncxvhtet7" path="res://hud.gd" id="3_feb5d"]
 
 [node name="Game" type="Node2D" unique_id=285940144]
 script = ExtResource("1_xex6t")
 
 [node name="Map" parent="." unique_id=1178251865 instance=ExtResource("2_e2o6t")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1840421747]
+script = ExtResource("3_feb5d")
+
+[node name="Root" type="VBoxContainer" parent="HUD" unique_id=1443586987]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoldLabel" type="Label" parent="HUD/Root" unique_id=1246391231]
+layout_mode = 2
+text = "Gold: 50"
+
+[node name="LivesLabel" type="Label" parent="HUD/Root" unique_id=1824792112]
+layout_mode = 2
+text = "Lives: 20"
