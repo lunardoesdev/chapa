@@ -23,8 +23,8 @@ _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 window/size/viewport_width=400
 window/size/viewport_height=300
+window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -32,6 +32,9 @@ enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [gui]
 
+theme/default_font_antialiasing=2
+theme/default_font_hinting=2
+theme/default_font_generate_mipmaps=true
 theme/custom="uid://cnhpnc5xc2de4"
 
 [physics]
@@ -40,6 +43,7 @@ theme/custom="uid://cnhpnc5xc2de4"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
