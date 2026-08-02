@@ -33,3 +33,31 @@ text = "Gold: 50"
 [node name="LivesLabel" type="Label" parent="HUD/Root" unique_id=1824792112]
 layout_mode = 2
 text = "Lives: 20"
+
+[node name="GameOver" type="PanelContainer" parent="HUD" unique_id=1829591408]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="HBoxContainer" parent="HUD/GameOver" unique_id=1224789626]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/GameOver/BoxContainer" unique_id=1518127072]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GoodGameLabel" type="Label" parent="HUD/GameOver/BoxContainer/VBoxContainer" unique_id=1595565733]
+layout_mode = 2
+text = "You won! Good game."
+
+[node name="ScoreLabel" type="Label" parent="HUD/GameOver/BoxContainer/VBoxContainer" unique_id=13946503]
+layout_mode = 2
+text = "Your score is: 0"
+
+[node name="RestartButton" type="Button" parent="HUD/GameOver/BoxContainer/VBoxContainer" unique_id=1708577381]
+layout_mode = 2
+text = "Start over"

@@ -10,6 +10,8 @@ var time = 0
 var lives = 20
 var gold: int = 50
 var curve: Curve2D
+var score: int = 0
+var _scoreComparator = gold
 
 func _try_upgrade_tower(t: Tower) -> void:
 	var upgrade_cost = t.cost / 2
@@ -45,13 +47,30 @@ func _try_place_tower(pos: Vector2) -> void:
 	$Map/Towers.add_child(t)
 	gold_changed.emit(gold)
 
+func updateScore(gold) -> void:
+	if !$HUD/GameOver.visible:
+		score = score + 25
+
+func _restart() -> void:
+	$HUD/GameOver.visible = false
+	get_tree().reload_current_scene()
+
+func _gameover() -> void:
+	$HUD/GameOver.visible = true
+	$HUD/GameOver/BoxContainer/VBoxContainer/ScoreLabel.text = "Your score is: %d" % score
+	$HUD/GameOver/BoxContainer/VBoxContainer/ScoreLabel.queue_redraw()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var path = $Map/EnemyPath
 	curve = path.curve
 	gold_changed.connect($HUD._on_gold_changed)
+	gold_changed.connect(updateScore)
 	lives_changed.connect($HUD._on_lives_changed)
 	$HUD.set_values(gold, lives)
+	
+	$HUD/GameOver/BoxContainer/VBoxContainer/RestartButton.pressed.connect(_restart)
+	$HUD/GameOver.visible = false
 	
 	var screenSize: Vector2i = DisplayServer.screen_get_size()
 	
@@ -78,6 +97,8 @@ func on_enemy_died():
 func on_goal_reached():
 	lives = lives - 1
 	lives_changed.emit(lives)
+	if lives <= 0:
+		_gameover()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
